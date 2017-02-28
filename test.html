@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+        <script src="vue2.0.js"></script>
+        <style type="text/css">
+            .demo {
+            }
+            .test1 {
+                background-color: red;
+            }
+            .test2 {
+                background-color: blue;
+            }
+            .test3 {
+                background-color: green;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="demo" id="demo">
+            <div class="test1" v-gesture:tap="{methods: tap, params1:1, params2:2}">
+                <p>测试1</p>
+                <p>测试333</p>
+            </div>
+            <div class="test2" v-gesture:swiper="{methods: swiper}">测试2</div>
+            <div class="test3" v-gesture:swiper="{methods: swiper}">测试3</div>
+            <p v-gesture>就gesture</p>
+        </div>
+    </body>
+    <script src="v-gesture.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: "#demo",
+            data: {
+                test1: 'tap事件',
+                test2: 'swipeLeft事件',
+                test3: 'swipeRight事件'
+            },
+            methods: {
+                tap: function (param) {
+                    console.dir(this.test1)
+                    console.dir(param)
+                    console.dir(param.params1)
+                    console.dir(param.params2)
+                },
+                swiper: function(param) {
+                    console.dir(this.test2)
+                    console.dir(param)
+                    console.dir(param.dir) // 方向
+                }
+            }
+        })
+    </script>
+</html>
